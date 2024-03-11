@@ -4,8 +4,8 @@ spring:
       client:
         registration:
           kakao:
-            client-id: ''
-            client-secret: ''
+            client-id: 6e1fbc65a52b1c1cae07032788e57aac
+            client-secret: 9S4Hc2PVEDw47ZGw85YxEtGcbEnkPtPv
             redirect-uri: http://localhost:8080/login/oauth2/code/kakao
             scope:
               - profile_nickname

@@ -1,6 +1,4 @@
 spring:
-  cache:
-    type: redis
   profiles:
     include: oauth
   h2:

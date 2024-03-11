@@ -12,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableWebSecurity
 class SecurityConfig(
     private val oAuth2MemberService: OAuth2MemberService,
-    private val redisAuthorizationRequestRepository: RedisAuthorizationRequestRepository,
 ) {
 
     @Bean
@@ -24,9 +23,6 @@ class SecurityConfig(
             }
             .headers { it.frameOptions { option -> option.sameOrigin()} }
             .oauth2Login {
-                it.authorizationEndpoint {
-                    auth -> auth.authorizationRequestRepository(redisAuthorizationRequestRepository)
-                }
                 it.userInfoEndpoint {
                         user -> user.userService(oAuth2MemberService)
                 }

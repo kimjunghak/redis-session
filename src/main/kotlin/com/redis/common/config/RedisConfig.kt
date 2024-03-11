@@ -3,17 +3,14 @@ package com.redis.common.config
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
-import org.springframework.data.redis.core.RedisTemplate
-import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession
 
 @Configuration
+@EnableRedisHttpSession
 class RedisConfig {
 
     @Bean
-    fun oauth2RedisSession(redisConnectionFactory: RedisConnectionFactory): RedisTemplate<String, OAuth2AuthorizationRequest> {
-        val redisTemplate = RedisTemplate<String, OAuth2AuthorizationRequest>()
-        redisTemplate.connectionFactory = redisConnectionFactory
-        return redisTemplate
-    }
+    fun redisConnectionFactory(): RedisConnectionFactory = LettuceConnectionFactory()
 
 }
